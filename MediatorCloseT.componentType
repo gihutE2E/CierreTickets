@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<componentType xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ui="http://xmlns.oracle.com/soa/designer/">
+   <service name="MediatorCloseT" ui:wsdlLocation="MediatorCloseT.wsdl">
+      <interface.wsdl interface="http://xmlns.oracle.com/AppActVersion1.7/CierreTickets/MediatorCloseT#wsdl.interface(execute_ptt)"/>
+   </service>
+   <reference name="SP_CLOSE_T" ui:wsdlLocation="SP_CLOSE_T.wsdl">
+      <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/db/AppActVersion1.7/CierreTickets/SP_CLOSE_T#wsdl.interface(SP_CLOSE_T_ptt)"/>
+   </reference>
+</componentType>

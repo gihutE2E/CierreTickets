@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<composite name="CierreTickets" revision="1.0" label="2016-04-21_11-30-31_414" mode="active" state="on" xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:orawsp="http://schemas.oracle.com/ws/2006/01/policy" xmlns:ui="http://xmlns.oracle.com/soa/designer/">
+   <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/AppActVersion1.7/CierreTickets/SP_CLOSE_T" location="SP_CLOSE_T.wsdl" importType="wsdl"/>
+   <import namespace="http://xmlns.oracle.com/AppActVersion1.7/CierreTickets/MediatorCloseT" location="MediatorCloseT.wsdl" importType="wsdl"/>
+   <service name="MediatorCloseT_ep" ui:wsdlLocation="MediatorCloseT.wsdl">
+      <interface.wsdl interface="http://xmlns.oracle.com/AppActVersion1.7/CierreTickets/MediatorCloseT#wsdl.interface(execute_ptt)"/>
+      <binding.ws port="http://xmlns.oracle.com/AppActVersion1.7/CierreTickets/MediatorCloseT#wsdl.endpoint(MediatorCloseT_ep/execute_pt)"/>
+   </service>
+   <property name="productVersion" type="xs:string" many="false">11.1.1.7.8</property>
+   <component name="MediatorCloseT">
+      <implementation.mediator src="MediatorCloseT.mplan"/>
+   </component>
+   <reference name="SP_CLOSE_T" ui:wsdlLocation="SP_CLOSE_T.wsdl">
+      <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/db/AppActVersion1.7/CierreTickets/SP_CLOSE_T#wsdl.interface(SP_CLOSE_T_ptt)"/>
+      <binding.jca config="SP_CLOSE_T_db.jca"/>
+      <property name="jca.retry.count" type="xs:int" many="false" override="may">4</property>
+      <property name="jca.retry.interval" type="xs:int" many="false" override="may">1</property>
+      <property name="jca.retry.backoff" type="xs:int" many="false" override="may">2</property>
+      <property name="jca.retry.maxInterval" type="xs:string" many="false" override="may">120</property>
+   </reference>
+   <wire>
+      <source.uri>MediatorCloseT_ep</source.uri>
+      <target.uri>MediatorCloseT/MediatorCloseT</target.uri>
+   </wire>
+   <wire>
+      <source.uri>MediatorCloseT/SP_CLOSE_T</source.uri>
+      <target.uri>SP_CLOSE_T</target.uri>
+   </wire>
+</composite>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Mediator name="MediatorCloseT" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" wsdlTargetNamespace="http://xmlns.oracle.com/AppActVersion1.7/CierreTickets/MediatorCloseT" xmlns="http://xmlns.oracle.com/sca/1.0/mediator">
+   <operation name="execute" deliveryPolicy="AllOrNothing" priority="4" validateSchema="false">
+      <switch>
+         <case executionType="direct" name="SP_CLOSE_T.SP_CLOSE_T" defaultRule="true">
+            <action>
+               <transform>
+                  <part name="$out.InputParameters" function="xslt(xsl/RequestTicket.xsl, $in.request)"/>
+               </transform>
+               <invoke reference="SP_CLOSE_T" operation="SP_CLOSE_T">
+                  <onReply/>
+               </invoke>
+            </action>
+         </case>
+      </switch>
+   </operation>
+</Mediator>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://elements.CierreTicket/cierreT" targetNamespace="http://elements.CierreTicket/cierreT" elementFormDefault="qualified">
+   <xsd:element name="Resultado" type="Resultado">
+      <xsd:annotation>
+         <xsd:documentation>
+        A sample element
+      </xsd:documentation>
+      </xsd:annotation>
+   </xsd:element>
+   <xsd:complexType name="Resultado">
+      <xsd:sequence>
+         <xsd:element name="res" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

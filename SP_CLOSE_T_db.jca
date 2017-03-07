@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<adapter-config name="SP_CLOSE_T" adapter="Database Adapter" wsdlLocation="SP_CLOSE_T.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+   <connection-factory location="eis/DB/Siebel" UIConnectionName="Siebel" adapterRef=""/>
+   <endpoint-interaction portType="SP_CLOSE_T_ptt" operation="SP_CLOSE_T">
+      <interaction-spec className="oracle.tip.adapter.db.DBStoredProcedureInteractionSpec">
+         <property name="SchemaName" value="SIEBCARGA5"/>
+         <property name="ProcedureName" value="SP_CLOSE_SR"/>
+         <property name="GetActiveUnitOfWork" value="false"/>
+      </interaction-spec>
+      <output/>
+   </endpoint-interaction>
+</adapter-config>
